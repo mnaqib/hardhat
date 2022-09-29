@@ -3,10 +3,13 @@ import '@nomicfoundation/hardhat-toolbox'
 import '@nomiclabs/hardhat-etherscan'
 import 'dotenv/config'
 import './tasks/blockNumber'
+import 'hardhat-gas-reporter'
+import 'solidity-coverage'
 
 const GOERLI_RPC_URL = process.env.GOERLI_RPC_URL as string
 const PRIVATE_KEY = process.env.PRIVATE_KEY as string
 const API_KEY = process.env.API_KEY as string
+const COINMARKETCAP_KEY = process.env.COINMARKETCAP_KEY as string
 
 const config: HardhatUserConfig = {
     solidity: '0.8.17',
@@ -25,6 +28,14 @@ const config: HardhatUserConfig = {
     etherscan: {
         // Your API key for Etherscan
         apiKey: API_KEY,
+    },
+    gasReporter: {
+        enabled: false,
+        outputFile: 'gas-report.txt',
+        noColors: true,
+        currency: 'USD',
+        coinmarketcap: COINMARKETCAP_KEY,
+        token: 'MATIC',
     },
 }
 

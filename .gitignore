@@ -21,3 +21,6 @@ typechain-types
 cache
 artifacts
 
+#gas report
+gas-report.txt
+
